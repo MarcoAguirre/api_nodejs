@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "Title": "Final Fantasy Brave Exvius",
-        "Characteristics": [
+        "title": "Final Fantasy Brave Exvius",
+        "characteristics": [
             "JRPG",
             "Multiplayer",
             "PVE",
@@ -11,8 +11,8 @@
     },
     {
         "id": 2,
-        "Title": "Elsword",
-        "Characteristics": [
+        "title": "Elsword",
+        "characteristics": [
             "MMORPG",
             "PVE",
             "PVP",

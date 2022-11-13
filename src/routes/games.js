@@ -13,7 +13,13 @@ router.get('/games', jsonParser, (req, res) => {
 });
 
 router.post('/games', jsonParser, (req, res) => {
-    console.log(req.body);
+    const rquestBody = req.body;
+    if (rquestBody.title && rquestBody.characteristics) {
+        const id = games.length + 1;
+        const gamesReceived = { ...req.body, id };
+        games.push(gamesReceived);
+        res.send(games);
+    }
     res.send("Recibido");
 });
 
