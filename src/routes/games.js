@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const underscore = require('underscore');
 const router = Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
@@ -13,14 +14,27 @@ router.get('/games', jsonParser, (req, res) => {
 });
 
 router.post('/games', jsonParser, (req, res) => {
-    const rquestBody = req.body;
-    if (rquestBody.title && rquestBody.characteristics) {
+    const requestBody = req.body;
+    if (requestBody.title && requestBody.characteristics) {
         const id = games.length + 1;
         const gamesReceived = { ...req.body, id };
         games.push(gamesReceived);
-        res.send(games);
+        if (!res.headersSent) {
+            res.send(requestBody.title + " was added!");
+        }
     }
-    res.send("Recibido");
 });
+
+router.delete('/games/:id', jsonParser, (req, res) => {
+    const { id } = req.params;
+    underscore.each(games, (game, i) => {
+        if (game.id == id) {
+            games.splice(i, 1);
+            if (!res.headersSent) {
+                res.send(req.body.title + " was deleted!");
+            }
+        }
+    });
+})
 
 module.exports = router;
