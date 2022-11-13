@@ -4,7 +4,10 @@ const app = express();
 
 //Config
 app.set('port', process.env.PORT || 3000);
+
+//Routes path
 app.use(require('./routes/index'));
+app.use(require('./routes/games'));
 
 //Middlewares
 app.use(morgan("dev"));
