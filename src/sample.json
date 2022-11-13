@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "Title": "Final Fantasy Brave Exvius",
+        "Characteristics": [
+            "JRPG",
+            "Multiplayer",
+            "PVE",
+            "Strategy"
+        ]
+    },
+    {
+        "id": 2,
+        "Title": "Elsword",
+        "Characteristics": [
+            "MMORPG",
+            "PVE",
+            "PVP",
+            "ROL",
+            "Action",
+            "Strategy"
+        ]
+    }
+]
