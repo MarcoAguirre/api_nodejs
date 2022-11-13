@@ -25,6 +25,22 @@ router.post('/games', jsonParser, (req, res) => {
     }
 });
 
+router.put('/games/:id', jsonParser, (req, res) => {
+    const { id } = req.params;
+    const requestBody = req.body;
+    if (requestBody.title && requestBody.characteristics) {
+        underscore.each(games, (game, i) => {
+            if (game.id == id) {
+                game.title = requestBody.title;
+                game.characteristics = requestBody.characteristics;
+            }
+        });
+        if (!res.headersSent) {
+            res.send(requestBody.title + " was modified!");
+        }
+    }
+});
+
 router.delete('/games/:id', jsonParser, (req, res) => {
     const { id } = req.params;
     underscore.each(games, (game, i) => {
@@ -35,6 +51,6 @@ router.delete('/games/:id', jsonParser, (req, res) => {
             }
         }
     });
-})
+});
 
 module.exports = router;
