@@ -4,16 +4,12 @@ const app = express();
 
 //Config
 app.set('port', process.env.PORT || 3000);
+app.use(require('./routes/index'));
 
 //Middlewares
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-//Routes
-app.get('/', (req, res) => {
-    res.json({ 'Title': 'Hello world' });
-})
 
 //Server start
 app.listen(app.get('port'), () => {
