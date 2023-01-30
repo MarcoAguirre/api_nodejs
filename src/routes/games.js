@@ -4,38 +4,22 @@ const router = Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-// const games = require('../sample.json');
+const { createPool } = require("mysql2/promise")
 
-const mysql = require("mysql");
-
-const connection = mysql.createConnection({
+const sql = createPool({
     host: "us-cdbr-east-06.cleardb.net",
     user: "b8aa1082043129",
     password: "2c03104d",
     database: "heroku_b1ecb17ae4bc3c0"
 });
 
-connection.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
-
-function read(connection, callback) {
-    connection.query('SELECT * FROM games', function (err, result) {
-        if (err) {
-            throw err;
-        }
-        callback(result)
-    })
+async function read(callback) {
+    const [rows] = await sql.query('SELECT * FROM games');
+    callback(rows);
 }
 
 router.get('/games', jsonParser, (req, res) => {
-    // res.send("Hello from games route");
-    // const data = games;
-    // res.json(data);
-    read(connection, (result) => {
+    read((result) => {
         res.json(result)
     })
 });
