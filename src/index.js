@@ -11,7 +11,7 @@ app.use(cors({
 app.set('port', process.env.PORT || 3000);
 
 //Routes path
-// app.use('/api', require('./routes/index'));
+app.use('/api', require('./routes/index'));
 app.use('/api', require('./routes/games'));
 
 //Middlewares
