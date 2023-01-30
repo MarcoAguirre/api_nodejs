@@ -9,10 +9,10 @@ const jsonParser = bodyParser.json();
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "game_store"
+    host: "us-cdbr-east-06.cleardb.net",
+    user: "b8aa1082043129",
+    password: "2c03104d",
+    database: "heroku_b1ecb17ae4bc3c0"
 });
 
 connection.connect((err) => {
