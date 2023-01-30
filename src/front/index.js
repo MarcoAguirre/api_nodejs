@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/games')
+fetch('https://game-storage.herokuapp.com/api/games')
     .then(response => response.json())
     .then(games => {
         let rows = games.map(element => createGameTemplate(element));
