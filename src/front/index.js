@@ -1,11 +1,13 @@
 fetch('http://localhost:3000/api/games')
     .then(response => response.json())
-    .then(data => {
-        const apiResponse = document.getElementById('games');
-        apiResponse.innerHTML =  "<ul>";
-        data.forEach(game => {
-            apiResponse.innerHTML += "<li>" + game.title + "</li>";
-        });
-        apiResponse.innerHTML += "</ul>";
+    .then(games => {
+        let rows = games.map(element => createGameTemplate(element));
+        let table = $("#games tbody");
+        table.append(rows);
     })
     .catch(error => console.log(error))
+
+function createGameTemplate(game) {
+    let template = $("#game-item-template")[0].innerHTML;
+    return Mustache.render(template, game);
+}
