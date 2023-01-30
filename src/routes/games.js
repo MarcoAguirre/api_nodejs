@@ -4,13 +4,40 @@ const router = Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
+// const games = require('../sample.json');
 
-const games = require('../sample.json');
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "game_store"
+});
+
+connection.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Connected to database');
+});
+
+function read(connection, callback) {
+    connection.query('SELECT * FROM games', function (err, result) {
+        if (err) {
+            throw err;
+        }
+        callback(result)
+    })
+}
 
 router.get('/games', jsonParser, (req, res) => {
     // res.send("Hello from games route");
-    const data = games;
-    res.json(data);
+    // const data = games;
+    // res.json(data);
+    read(connection, (result) => {
+        res.json(result)
+    })
 });
 
 router.post('/games', jsonParser, (req, res) => {
