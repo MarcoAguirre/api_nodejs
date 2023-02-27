@@ -2,7 +2,8 @@ name: Tagging
 
 on:
   push:
-    branches: ['8.0']
+    branches:
+    - test/acions_tag
 jobs:
   release:
     runs-on: ubuntu-latest
