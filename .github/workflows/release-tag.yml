@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - test/actions_tag
+      - 1.0.0
 jobs:
   release:
     runs-on: ubuntu-latest
