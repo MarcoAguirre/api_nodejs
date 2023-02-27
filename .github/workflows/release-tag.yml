@@ -11,6 +11,7 @@ jobs:
       - name: Create an incremental tag
         uses: aurestic/incremental-tag@1.0.8
         with:
+          flag_branch: true
           prev_tag: 'v'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
