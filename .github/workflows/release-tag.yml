@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 1.0.0
+      - 1.0.3
 jobs:
   release:
     runs-on: ubuntu-latest
