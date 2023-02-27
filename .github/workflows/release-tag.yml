@@ -3,7 +3,7 @@ name: Tagging
 on:
   push:
     branches:
-    - test/acions_tag
+    - test/actions_tag
 jobs:
   release:
     runs-on: ubuntu-latest
