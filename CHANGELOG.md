@@ -1,3 +1,5 @@
+## [1.0.1](https://github.com/MarcoAguirre/api_nodejs/compare/v1.0.0-stg...v1.0.1-stg) (2023-02-28)
+
 # 1.0.0 (2023-02-28)
 
 
