@@ -7,7 +7,8 @@ module.exports = {
             "releaseRules": [
                 { "type": "docs", "release": "patch" },
                 { "type": "refactor", "release": "patch" },
-                { "type": "style", "release": "patch" }
+                { "type": "style", "release": "patch" },
+                { "type": "release", "release": "major" }
             ]
         }],
         "@semantic-release/release-notes-generator",
