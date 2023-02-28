@@ -1,19 +1,18 @@
-name: Tagging
-
+name: Tagging ioet
 on:
   push:
     branches:
-    - test/actions_tag
+      - test/actions_tag
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Create an incremental tag
-        uses: aurestic/incremental-tag@1.0.8
-        with:
-          flag_branch: false
-          prev_tag: 'v'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.55.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: true
