@@ -21,7 +21,7 @@ name: bumping-versions-pipeline
 on:
   push:
     branches:
-    - "test/actions_tag"
+    - "test/release_tag"
 jobs:
   release:
     name: bumping-version
