@@ -1,6 +1,6 @@
 module.exports = {
     branches: ['test/release_tag'],
-    tagFormat: "v${version}-stg",
+    tagFormat: "v${version}-stage",
     plugins: [
         ["@semantic-release/commit-analyzer", {
             "preset": "angular",
