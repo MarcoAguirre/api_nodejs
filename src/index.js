@@ -10,7 +10,7 @@ app.use(cors({
 //Config
 app.set('port', process.env.PORT || 3000);
 
-//Routes path example
+//Routes path
 app.use('/api', require('./routes/index'));
 app.use('/api', require('./routes/games'));
 
