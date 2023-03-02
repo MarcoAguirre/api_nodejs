@@ -1,43 +1,25 @@
-# name: Tagging ioet
-# on:
-#   push:
-#     branches:
-#       - test/actions_tag
-# jobs:
-#   build:
-#     runs-on: ubuntu-22.04
-#     steps:
-#     - uses: actions/checkout@v3
-#       with:
-#         fetch-depth: '0'
-
-#     - name: Bump version and push tag
-#       uses: anothrNick/github-tag-action@1.55.0
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         WITH_V: true
-
 name: bumping-versions-pipeline
 on:
   push:
     branches:
-    - "test/release_tag"
+      - "main"
 jobs:
   release:
     name: bumping-version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v1
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
+          node-version: "18.x"
+
       - name: Install dependencies
         run: npm install semantic-release @semantic-release/changelog @semantic-release/git
+
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_RELEASE }}
         run: npx semantic-release

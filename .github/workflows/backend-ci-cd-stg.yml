@@ -1,0 +1,31 @@
+name: CI/CD backend stg
+
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+-stg
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "api/**"
+      - "infrastructure/**"
+      - "!infrastructure/backend/prod/**"
+      - ".github/workflows/backend-ci.yml"
+      - ".github/workflows/backend-ci-cd-stg.yml"
+
+jobs:
+  ci-stg:
+    uses: ./.github/workflows/backend-ci.yml
+    with:
+      environment-name: stg
+      filter_base: ${{shellRunner (git describe --abbrev=0 --tags --exclude $(git describe --abbrev=0 --tags | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg')) | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg'}}
+    secrets: inherit
+
+  cd-stg:
+    needs: ci-stg
+    if : github.event_name == 'push'
+    uses: ./.github/workflows/backend-cd.yml
+    with:
+      environment-name: stg
+      filter_base: ${{shellRunner (git describe --abbrev=0 --tags --exclude $(git describe --abbrev=0 --tags | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg')) | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg'}}
+    secrets: inherit

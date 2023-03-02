@@ -1,0 +1,32 @@
+name: CI-backend
+
+on: 
+  workflow_call:
+    inputs:
+      environment-name: 
+        type: string
+        required: true
+        description: Env name
+      filter_base:
+        type: string
+        default: ""
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Detect Changes on Files
+        id: changes
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            api:
+              - 'api/**'
+            infrastructure: 
+              - 'infrastructure/aws/**'
+              - 'infrastructure/backend/environment/**'
+              - 'infrastructure/backend/${{ inputs.environment-name }}/**'
+          base: ${{inputs.filter_base}}
