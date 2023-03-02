@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/backend-ci.yml
     with:
       environment-name: stg
-      filter_base: ${{shellRunner (git describe --abbrev=0 --tags --exclude $(git describe --abbrev=0 --tags | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg')) | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg'}}
+      filter_base: ${{(git describe --abbrev=0 --tags --exclude $(git describe --abbrev=0 --tags | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg')) | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg'}}
     secrets: inherit
 
   cd-stg:
@@ -27,5 +27,5 @@ jobs:
     uses: ./.github/workflows/backend-cd.yml
     with:
       environment-name: stg
-      filter_base: ${{shellRunner (git describe --abbrev=0 --tags --exclude $(git describe --abbrev=0 --tags | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg')) | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg'}}
+      filter_base: ${{(git describe --abbrev=0 --tags --exclude $(git describe --abbrev=0 --tags | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg')) | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+-stg'}}
     secrets: inherit
