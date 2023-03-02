@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/MarcoAguirre/api_nodejs/compare/v1.3.0-stg...v1.4.0-stg) (2023-03-02)
+
+
+### Features
+
+* test run a command and save the result in a variable ([b2a6016](https://github.com/MarcoAguirre/api_nodejs/commit/b2a60165231bd323aceb1fa898c9645ec04210d5))
+
 # [1.3.0](https://github.com/MarcoAguirre/api_nodejs/compare/v1.2.1-stg...v1.3.0-stg) (2023-03-02)
 
 
