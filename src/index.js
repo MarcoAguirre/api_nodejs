@@ -14,7 +14,7 @@ app.set('port', process.env.PORT || 3000);
 app.use('/api', require('./routes/index'));
 app.use('/api', require('./routes/games'));
 
-//Middlewares
+//Middlewares example
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
