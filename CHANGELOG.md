@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/MarcoAguirre/api_nodejs/compare/v1.2.1-stg...v1.3.0-stg) (2023-03-02)
+
+
+### Features
+
+* add release config file ([618af37](https://github.com/MarcoAguirre/api_nodejs/commit/618af37669b1523fa4e1942edb2281f54b1fade4))
+* test reusable workflow ([3b391ed](https://github.com/MarcoAguirre/api_nodejs/commit/3b391ed1cf2448c4761d1482ff18f5c63b87855f))
+
 # [2.0.0](https://github.com/MarcoAguirre/api_nodejs/compare/v1.0.0-stage...v2.0.0-stage) (2023-02-28)
 
 # 1.0.0 (2023-02-28)
